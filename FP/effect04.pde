@@ -1,19 +1,13 @@
-
 float bgHue;
 float avg;
 float ballBaseHue;
-
 float diameter;
-
 float ballX;
 float ballY;
-
 float ballHue;
 float ballSat;
 float ballBright;
 float ballAlpha;
-
-
 void effect03dra()
 {
   noStroke();
@@ -22,25 +16,18 @@ void effect03dra()
   stroke(bgHue, 200, 255, 150);
   strokeWeight(4);
   noFill();
-
   float xpos;
   float ypos;
-
   avg=0;
   beginShape();
-
   for (int i = 0; i < player[2].bufferSize(); i++) {
     xpos=map(i, 0, player[2].bufferSize(), 0, width);
     ypos=height/2+100*player[2].mix.get(i);
-
     vertex(xpos, ypos);
-
     avg+=abs(player[2].mix.get(i));
   }
   endShape();
-
   avg/=player[2].bufferSize();
-
   ballBaseHue=map(avg, 0, 0.6, 170, 0);  //HSB模式下，170是蓝色，0是红色，正好体现"冷和热"
 
   noStroke();
