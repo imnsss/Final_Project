@@ -40,3 +40,4 @@ These warning are harmless.
 - December 14, 2021 > Make some adjusts to the interface and add some explanations for the code that could make it easier for the TA to know what the code does!!
 - December 14, 2021 > Update README.md file...
 
+I finished most of it on the 12th. Later, there's always something I want to change after I hand it in. For example, I improved the layout of the code to make it easier to read. There are also some UI button positions that I always try to put in a perfect (satisfied) position, so I keep adjusting them. Compared to the core of the code, they are inessential changes, just for aesthetic.
