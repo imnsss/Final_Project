@@ -16,7 +16,7 @@ void effect01dra()
   int circRad = 193;
   int cRad = 219;
 
-  int circThick = 3;//宽度
+  int circThick = 3; //Thickness of the circle
 
   strokeWeight(1);
 

@@ -32,6 +32,7 @@ int bpm = 85;  //Initial BPM
 int beat;
 int mode=0;
 int MidiStep=28; // The gap between buttons
+
 ArrayList<Rect> buttons = new ArrayList<Rect>();
 boolean playToggle = false;
 
@@ -164,6 +165,7 @@ public void Continue() {
   player[mode].loop();
 }
 
+// Relates to the DrumMachine
 void MIDI()
 {
   for (int i = 0; i < buttons.size(); ++i)

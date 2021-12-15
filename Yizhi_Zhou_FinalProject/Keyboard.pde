@@ -22,7 +22,7 @@ void keyPressed()
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("E4").asHz(), 1.60 ) );
   }
-  if (key=='q')
+  if (key=='h')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("F4").asHz(), 1.60 ) );
   }
