@@ -12,9 +12,14 @@
 - Keyboard. Simulated piano key sounds (do, Re, Mi, FA,so...)
 - There is also a special music visualization for drum machine and keyboard! 
 
-## Libraries
+
+
+## Libraries & References
 - minim
 - controlP5
+- Music Player Tutorial > https://www.bilibili.com/video/BV1D5411n7zD
+- minim examples
+- controlP5 examples
 
 ## Harmless Problem
 ```
