@@ -15,7 +15,7 @@
 
 
 ## Simple Guidance
-- Click mouse the interact with buttons
+- Click/Hold down the mouse to interact with buttons
 - Press keys "A" "S" "D" "F" "G" "H" "W" "E" "R" "T" "Y"... to play the piano
 
 
