@@ -3,6 +3,7 @@
 * There are many interactive buttons in the program. The interaction among music, computer and human brings visual and experiential effects
 * Users can not only experience music visualizations, but also create their own compositions with drum machines and keyboards 
 
+
 ## Contents
 - Concise and simple interface, very easy to get familiar with this program and use it
 - Three interesting and different style music visualizations
@@ -13,6 +14,10 @@
 - There is also a special music visualization for drum machine and keyboard! 
 
 
+## Simple Guidance
+- Click mouse the interact with buttons
+- Press keys "A" "S" "D" "F" "G" "H" "W" "E" "R" "T" "Y"... to play the piano
+
 
 ## Libraries & References
 - minim
@@ -20,6 +25,7 @@
 - Music Player Tutorial > https://www.bilibili.com/video/BV1D5411n7zD
 - minim examples
 - controlP5 examples
+
 
 ## Harmless Problem
 ```
