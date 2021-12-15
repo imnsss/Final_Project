@@ -37,7 +37,7 @@ boolean playToggle = false;
 
 void setup()
 {
-  size(1000, 1000);
+  size(1050,1000);
   cp5 = new ControlP5(this);
   minim=new Minim(this);
   out = minim.getLineOut();
@@ -50,11 +50,11 @@ void setup()
   snare = new Sampler( "SD.wav", 4, minim );
   hat   = new Sampler( "CHH.wav", 4, minim );
   
-  for (int i = 0; i < 12; i++)
+  for (int i = 0; i < 16; i++)
   {
-    buttons.add( new Rect(150+i*MidiStep, 850, hatRow, i ) );
-    buttons.add( new Rect(150+i*MidiStep, 900, snrRow, i ) );
-    buttons.add( new Rect(150+i*MidiStep, 950, kikRow, i ) );
+    buttons.add( new Rect(95+i*MidiStep, 860, hatRow, i ) );
+    buttons.add( new Rect(95+i*MidiStep, 910, snrRow, i ) );
+    buttons.add( new Rect(95+i*MidiStep, 960, kikRow, i ) );
   }
 
   player[0].loop();
@@ -63,48 +63,48 @@ void setup()
 
   for (int i=0; i<3; i++) {
     cp5.addBang("bang"+i)
-      .setPosition(width/2+20-3*40+i*80+200, height-100)
+      .setPosition(width/2+20-3*40+i*80+180, height-95)
       .setSize(40, 40)
       .setId(i)
       ;
   }
 
   cp5.addSlider("Vol")
-    .setPosition(width/2-100+200, height-150)
+    .setPosition(width/2-100+180, height-150)
     .setSize(200, 20)
-    .setRange(-20, 20)
-    .setValue(0) //Initial volume of the song
+    .setRange(-30, 30)
+    .setValue(-20) //Initial volume of the song
     ;
 
   cp5.addBang("Pause")
-    .setPosition(width/2-150+200, height-150)
+    .setPosition(width/2+120+230, height-150)
     .setSize(30, 30)
     .setLabel("Pause")
     ;
     
   cp5.addBang("Continue")
-    .setPosition(width/2+120+200, height-150)
-    .setSize(30, 30)
-    .setLabel("Continue")
+    .setPosition(width/2+120+230, height-90)
+    .setSize(70, 30)
+    .setLabel("Continue/Replay")
     ;
 
   cp5.addKnob("Tempo")
     .setRange(30, 230)
     .setValue(85)
-    .setPosition(40, 870)
+    .setPosition(40, 750)
     .setRadius(30)
     .setDragDirection(Knob.HORIZONTAL)
     ;
 
   cp5.addToggle("PlayPause")
-    .setPosition(55, height - 180)
-    .setSize(30, 30)
+    .setPosition(20, height - 130)
+    .setSize(30, 70)
     .setValue(false)
     ;
 
-  //kick.patch( out );
-  //snare.patch( out);
-  //hat.patch( out );
+  kick.patch( out );
+  snare.patch( out);
+  hat.patch( out );
 
   beat = 0;
   out.setTempo( bpm );
@@ -128,7 +128,7 @@ void draw()
   }
   popMatrix();
   noStroke();
-  fill(23);
+  fill(40); //UI background color
   rect(0, 700, width, 300);
   outF();
   MIDI();
@@ -163,6 +163,7 @@ public void Pause() {
 public void Continue() {
   player[mode].loop();
 }
+
 void MIDI()
 {
   for (int i = 0; i < buttons.size(); ++i)
@@ -178,18 +179,29 @@ void MIDI()
     fill(0, 200, 0);
   }
   stroke(0);
-  line(150+beat*MidiStep, 837, 150+beat*MidiStep, 964);
+  line(95+beat*MidiStep, 840, 95+beat*MidiStep, 980);
 }
+
+//Music playback progress bar
 void Drawjdt()
 {
-  float posx = map(player[mode].position(), 0, player[mode].length(), 555+15, 844-15);
+  float posx = map(player[mode].position(), 0, player[mode].length(), 555+45, 874-15);
   stroke(234, 234, 234);
   strokeWeight(5);
-  line(555, 788, 844, 788);
+  line(585, 772, 874, 772);
   noStroke();
-  fill(0, 209, 247);
-  ellipse(posx, 788, 30, 30);
+  fill(233, 244, 255);
+  ellipse(posx, 772, 30, 30);
+  fill(172, 198, 222);
+  ellipse(posx, 772, 19, 19);
+  
+  if (mousePressed&mouseX>585&&mouseX<874&&mouseY>762&&mouseY<782) {
+   int position=(int)map(mouseX, 585, 874, 0, player[mode].length());
+     player[mode].cue(position);
+  }
 }
+
+//music visualization for drum machine and keyboard
 void outF()
 {
   fill(63);
