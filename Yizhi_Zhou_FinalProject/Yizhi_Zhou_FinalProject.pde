@@ -1,3 +1,11 @@
+// It shows an error when running the program
+//          ==== JavaSound Minim Error ==== 
+//          ==== Don't know the ID3 code APIC
+// Through my search, ID3 tags are the textual parts of MP3 giving information like artist or title.
+// For some reason, Minim complains when it doesn't recognize a tag, but there are many custom tags.
+// These warning are harmless.
+
+//Final Project
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -20,10 +28,10 @@ boolean[] hatRow = new boolean[16];
 boolean[] snrRow = new boolean[16];
 boolean[] kikRow = new boolean[16];
 
-int bpm = 85;
+int bpm = 85;  //Initial BPM
 int beat;
 int mode=0;
-int MidiStep=28;
+int MidiStep=28; // The gap between buttons
 ArrayList<Rect> buttons = new ArrayList<Rect>();
 boolean playToggle = false;
 
@@ -34,9 +42,10 @@ void setup()
   minim=new Minim(this);
   out = minim.getLineOut();
 
-  player[0]=minim.loadFile("Aimer (エメ) - カタオモイ (单相思).mp3", 2048);
+  player[0]=minim.loadFile("Aimer.mp3", 2048); // The original name: Aimer (エメ) - カタオモイ (单相思).mp3 // The processing font needs to be changed so I deleted the Chinese and Japanese Fonts
   player[1]=minim.loadFile("Martin Garrix _ David Guetta _ Jamie Scott _ Romy Dya - So Far Away.mp3", 2048);
   player[2]=minim.loadFile("Sub Urban; Bella Poarch - INFERNO.mp3", 2048);
+    
   kick  = new Sampler( "BD.wav", 4, minim );
   snare = new Sampler( "SD.wav", 4, minim );
   hat   = new Sampler( "CHH.wav", 4, minim );
@@ -72,16 +81,16 @@ void setup()
     .setSize(30, 30)
     .setLabel("Pause")
     ;
+    
   cp5.addBang("Continue")
     .setPosition(width/2+120+200, height-150)
     .setSize(30, 30)
     .setLabel("Continue")
     ;
 
-
   cp5.addKnob("Tempo")
     .setRange(30, 230)
-    .setValue(100)
+    .setValue(85)
     .setPosition(40, 870)
     .setRadius(30)
     .setDragDirection(Knob.HORIZONTAL)

@@ -1,48 +1,48 @@
-// The sound of keyboard could be adjusted through Hertz
+// The sound of keyboard could be edited through Hertz
 
 void keyPressed()
 {
-  if (key=='1')
+  if (key=='a')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("C4").asHz(), 1.60 ) );
   }
-  if (key=='2')
+  if (key=='s')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("C#4").asHz(), 1.60 ) );
   }
-  if (key=='3')
+  if (key=='d')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("D4").asHz(), 1.60 ) );
   }
-  if (key=='4')
+  if (key=='f')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("D#4").asHz(), 1.60 ) );
   }
-  if (key=='5')
+  if (key=='g')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("E4").asHz(), 1.60 ) );
   }
-  if (key=='6')
+  if (key=='q')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("F4").asHz(), 1.60 ) );
   }
-  if (key=='7')
+  if (key=='w')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("F#4").asHz(), 1.60 ) );
   }
-  if (key=='8')
+  if (key=='e')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("G4").asHz(), 1.60 ) );
   }
-  if (key=='9')
+  if (key=='r')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("G#4").asHz(), 1.60 ) );
   }
-  if (key=='0')
+  if (key=='t')
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("A4").asHz(), 1.60 ) );
   }
-  if (key=='-')
+  if (key=='y') 
   {
     out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("B4").asHz(), 1.60 ) );
   }
