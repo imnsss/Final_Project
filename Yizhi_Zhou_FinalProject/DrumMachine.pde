@@ -3,24 +3,29 @@ class Tick implements Instrument
 
   void noteOn( float dur )
   {
-    if ( hatRow[beat] )
-    {
+    if (playToggle) {
+      if ( hatRow[beat] )
+      {
 
-      hat.trigger();
-    }
-    if ( snrRow[beat] )
-    {
+        hat.trigger();
+      }
+      if ( snrRow[beat] )
+      {
 
-      snare.trigger();
-    }
-    if ( kikRow[beat] ) {
-      kick.trigger();
+        snare.trigger();
+      }
+      if ( kikRow[beat] ) {
+        kick.trigger();
+      }
     }
   }
 
   void noteOff()
   {
-    beat = (beat+1)%16;
+    if (playToggle) {
+      beat = (beat+1)%16;
+    }
+
     out.setTempo(bpm);
     out.playNote( 0, 0.25f, this );
   }

@@ -1,4 +1,3 @@
-//Final Project
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -11,18 +10,22 @@ import controlP5.*;
 ControlP5 cp5;
 AudioOutput out;
 Minim minim;
-int bpm = 85;
+
 AudioPlayer []player=new AudioPlayer[3];
 Sampler     kick;
 Sampler     snare;
 Sampler     hat;
+
 boolean[] hatRow = new boolean[16];
 boolean[] snrRow = new boolean[16];
 boolean[] kikRow = new boolean[16];
+
+int bpm = 85;
 int beat;
 int mode=0;
 int MidiStep=28;
 ArrayList<Rect> buttons = new ArrayList<Rect>();
+boolean playToggle = false;
 
 void setup()
 {
@@ -37,6 +40,7 @@ void setup()
   kick  = new Sampler( "BD.wav", 4, minim );
   snare = new Sampler( "SD.wav", 4, minim );
   hat   = new Sampler( "CHH.wav", 4, minim );
+  
   for (int i = 0; i < 12; i++)
   {
     buttons.add( new Rect(150+i*MidiStep, 850, hatRow, i ) );
@@ -60,7 +64,7 @@ void setup()
     .setPosition(width/2-100+200, height-150)
     .setSize(200, 20)
     .setRange(-20, 20)
-    .setValue(128)
+    .setValue(0) //Initial volume of the song
     ;
 
   cp5.addBang("Pause")
@@ -83,15 +87,21 @@ void setup()
     .setDragDirection(Knob.HORIZONTAL)
     ;
 
+  cp5.addToggle("PlayPause")
+    .setPosition(55, height - 180)
+    .setSize(30, 30)
+    .setValue(false)
+    ;
 
-  kick.patch( out );//不是混响暂时不能用
-  snare.patch( out);
-  hat.patch( out );
+  //kick.patch( out );
+  //snare.patch( out);
+  //hat.patch( out );
 
   beat = 0;
   out.setTempo( bpm );
   out.playNote( 0, 0.25f, new Tick() );
 }
+
 void draw()
 {
   background(0);
@@ -184,50 +194,7 @@ void outF()
     line(w, 796 + out.right.get(i)*30, w+1, 796 + out.right.get(i+1)*30);
   }
 }
-void keyPressed()
-{
-  if (key=='a')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("C4").asHz(), 1.60 ) );
-  }
-  if (key=='s')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("C#4").asHz(), 1.60 ) );
-  }
-  if (key=='d')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("D4").asHz(), 1.60 ) );
-  }
-  if (key=='f')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("D#4").asHz(), 1.60 ) );
-  }
-  if (key=='g')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("E4").asHz(), 1.60 ) );
-  }
-  if (key=='h')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("F4").asHz(), 1.60 ) );
-  }
-  if (key=='j')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("F#4").asHz(), 1.60 ) );
-  }
-  if (key=='k')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("G4").asHz(), 1.60 ) );
-  }
-  if (key=='l')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("G#4").asHz(), 1.60 ) );
-  }
-  if (key==';')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("A4").asHz(), 1.60 ) );
-  }
-  if (key==' ')
-  {
-    out.playNote(0, 0.3, new ToneInstrument(Frequency.ofPitch("B4").asHz(), 1.60 ) );
-  }
+
+void PlayPause(boolean toggVal) {
+  playToggle = toggVal;
 }
